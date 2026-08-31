@@ -330,7 +330,7 @@ function initOnline() {
 
   firebase.initializeApp(config);
   database = firebase.database();
-  onlineStatus.textContent = "创建房间后，把房间码发给筠筠。";
+  onlineStatus.textContent = "创建房间后，把房间码发给好友。";
 }
 
 function createRoomCode() {
@@ -382,7 +382,7 @@ function leaveRoom() {
   aiToggle.disabled = false;
   leaveRoomBtn.classList.add("hidden");
   onlineTitle.textContent = "在线对局";
-  setOnlineStatus("创建房间后，把房间码发给筠筠。");
+  setOnlineStatus("创建房间后，把房间码发给好友。");
 }
 
 function applyRemoteState(state) {
@@ -441,7 +441,7 @@ function createOnlineRoom() {
     .then(() => {
       setOnlineMode(nextRoomCode, "black");
       listenToRoom();
-      setOnlineStatus(`房间码 ${roomCode}，发给筠筠加入。`);
+      setOnlineStatus(`房间码 ${roomCode}，发给好友加入。`);
     })
     .catch(() => setOnlineStatus("创建失败，检查 Firebase 配置和数据库权限。"))
     .finally(() => {
