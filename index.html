@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>77的五子棋</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-label="五子棋小游戏">
+      <section class="game-shell">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">For You</p>
+            <h1>77的五子棋</h1>
+          </div>
+          <div class="scoreboard" aria-label="比分">
+            <div>
+              <span id="blackScore">0</span>
+              <small>黑棋</small>
+            </div>
+            <div>
+              <span id="whiteScore">0</span>
+              <small>白棋</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="status-row">
+          <div class="turn-pill" id="turnPill">
+            <span class="stone-dot black"></span>
+            <span id="statusText">黑棋先手</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="aiToggle" />
+            <span></span>
+            <strong>陪玩模式</strong>
+          </label>
+        </div>
+
+        <div class="online-panel" id="onlinePanel">
+          <div class="online-copy">
+            <strong id="onlineTitle">在线对局</strong>
+            <span id="onlineStatus">创建房间后，把房间码发给好友。</span>
+          </div>
+          <div class="online-actions">
+            <button id="createRoomBtn" type="button">创建房间</button>
+            <input id="roomCodeInput" type="text" inputmode="latin" maxlength="8" placeholder="房间码" />
+            <button id="joinRoomBtn" type="button">加入</button>
+            <button id="leaveRoomBtn" class="ghost hidden" type="button">离开</button>
+          </div>
+        </div>
+
+        <div class="board-wrap">
+          <canvas id="board" width="720" height="720" aria-label="五子棋棋盘"></canvas>
+          <div class="win-banner hidden" id="winBanner">
+            <p id="winText">黑棋赢啦</p>
+            <button id="nextRoundBtn" type="button">再来一局</button>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="undoBtn" type="button" title="悔棋" aria-label="悔棋">
+            <span>↶</span>
+          </button>
+          <button id="restartBtn" type="button" title="重新开始" aria-label="重新开始">
+            <span>↺</span>
+          </button>
+          <button id="swapBtn" type="button">交换先手</button>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <div class="note">
+          <p class="note-title">小纸条</p>
+          <p id="loveNote">赢的人可以提一个小愿望。</p>
+        </div>
+        <div class="moves">
+          <div class="moves-head">
+            <h2>落子记录</h2>
+            <span id="moveCount">0 手</span>
+          </div>
+          <ol id="moveList"></ol>
+        </div>
+      </aside>
+    </main>
+
+    <script src="online-config.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+    <script src="game.js"></script>
+  </body>
+</html>
